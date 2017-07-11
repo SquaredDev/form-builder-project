@@ -81,20 +81,43 @@ let formData = [
     "options": []
   }
 ];
-
-// HINTS:
-// As you can see, we access the first element in the array
-// with [0] and then grab the property "label" using the "." operator
-( function(){
-  // Select the first element from the array
-  let first = formData[ 0 ];
-  // Log the first object
-  console.log( first );
-  // Log the string "First Name"
-  console.log( first.label );
-} )();
+//
+// // HINTS:
+// // As you can see, we access the first element in the array
+// // with [0] and then grab the property "label" using the "." operator
+// ( function(){
+//   // Select the first element from the array
+//   let first = formData[ 0 ];
+//   // Log the first object
+//   console.log( first );
+//   // Log the string "First Name"
+//   console.log( first.label );
+// } )();
 
 
 // -------- Your Code Goes Below this Line --------
 
+let fields = document.querySelector('#fields')
 
+let htmlStr = '<form>'
+
+formData.forEach(function(item){
+  if (item.type === 'text' || item.type === 'email' || item.type === 'tel') {
+    htmlStr += `<div><input type="${item.type}" placeholder="${item.label}" id="${item.id}" /></div>`
+  }
+  if (item.type === 'textarea') {
+    htmlStr += `<div><textarea id="${item.id}" placeholder="${item.label}"></textarea></div>`
+  }
+  if (item.type === 'select') {
+    htmlStr += `<div><select id="${item.id}">`
+    htmlStr += `<option value="">${item.label}</option>`
+    item.options.forEach(function(option){
+      htmlStr += `<option value="${option.value}">${option.label}</option>`
+    })
+    htmlStr += '</select></div>'
+  }
+})
+
+htmlStr += '</form>'
+
+fields.innerHTML = htmlStr
