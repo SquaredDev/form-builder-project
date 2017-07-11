@@ -97,27 +97,27 @@ let formData = [
 
 // -------- Your Code Goes Below this Line --------
 
-let fields = document.querySelector('#fields')
+let field = document.querySelector('#fields')
 
-let htmlStr = '<form>'
+let htmlString = '<form>'
 
 formData.forEach(function(item){
   if (item.type === 'text' || item.type === 'email' || item.type === 'tel') {
-    htmlStr += `<div><input type="${item.type}" placeholder="${item.label}" id="${item.id}" /></div>`
+    htmlString += `<div><input type="${item.type}" placeholder="${item.label}" id="${item.id}" /></div>`
   }
   if (item.type === 'textarea') {
-    htmlStr += `<div><textarea id="${item.id}" placeholder="${item.label}"></textarea></div>`
+    htmlString += `<div><textarea id="${item.id}" placeholder="${item.label}"></textarea></div>`
   }
   if (item.type === 'select') {
-    htmlStr += `<div><select id="${item.id}">`
-    htmlStr += `<option value="">${item.label}</option>`
+    htmlString += `<div><select id="${item.id}">`
+    htmlString += `<option value="">${item.label}</option>`
     item.options.forEach(function(option){
-      htmlStr += `<option value="${option.value}">${option.label}</option>`
+      htmlString += `<option value="${option.value}">${option.label}</option>`
     })
-    htmlStr += '</select></div>'
+    htmlString += '</select></div>'
   }
 })
 
-htmlStr += '</form>'
+htmlString += '</form>'
 
-fields.innerHTML = htmlStr
+field.innerHTML = htmlString
