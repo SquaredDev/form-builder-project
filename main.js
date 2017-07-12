@@ -99,14 +99,14 @@ let formData = [
 
 let field = document.querySelector('#fields')
 
-let htmlString = '<form>'
+let htmlString = '<form><div>'
 
 formData.forEach(function(item){
   if (item.type === 'text' || item.type === 'email' || item.type === 'tel') {
-    htmlString += `<div><input type="${item.type}" placeholder="${item.label}" id="${item.id}" /></div>`
+    htmlString += `<div><i class="fa ${item.icon}"></i><input type="${item.type}" placeholder="${item.label}" id="${item.id}" /></div>`
   }
   if (item.type === 'textarea') {
-    htmlString += `<div><textarea id="${item.id}" placeholder="${item.label}"></textarea></div>`
+    htmlString += `<div><i class="fa ${item.icon}"><textarea id="${item.id}" placeholder="${item.label}"></textarea></div>`
   }
   if (item.type === 'select') {
     htmlString += `<div><select id="${item.id}">`
@@ -118,6 +118,6 @@ formData.forEach(function(item){
   }
 })
 
-htmlString += '</form>'
+htmlString += '</div></form>'
 
 field.innerHTML = htmlString
